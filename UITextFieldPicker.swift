@@ -1,5 +1,7 @@
 var AssociatedObjectHandle: UInt8 = 0
-
+public protocol DropDownDelegate: class {
+    func dropdownDidChangeValue(textfield: UITextField, title: String, index: Int)
+}
 extension UITextField: UIPickerViewDataSource, UIPickerViewDelegate {
  
         public static var _pickerArray = [String: [String]]()
@@ -41,16 +43,15 @@ extension UITextField: UIPickerViewDataSource, UIPickerViewDelegate {
         }
     }
     
-    
-    func addDropDownasInput(withArray: [String]) {
+      func addDropDownAsInput(withArray: [String]) {
         self.pickerArray = withArray
         self.pickerView =  UIPickerView()
         pickerView.delegate = self
         pickerView.dataSource = self
         self.inputView = pickerView
         let toolBar = UIToolbar.init(frame: CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: UIScreen.main.bounds.size.width, height: 40)))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(UITextField.donePressed))
-            toolBar.setItems([doneButton], animated: true)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(UITextField.donePressed))
+        toolBar.setItems([doneButton], animated: true)
         toolBar.barStyle = UIBarStyle.blackTranslucent
         toolBar.tintColor = UIColor.white
         toolBar.backgroundColor = UIColor.black
