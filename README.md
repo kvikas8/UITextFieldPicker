@@ -23,3 +23,4 @@ extension YourController: DropDownDelegate {
 }
 
 ```
+Example: ![Alt Text](https://github.com/kvikas8/UITextFieldPicker/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-12-05%20at%2019.49.21.png)
